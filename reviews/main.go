@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/data_lodge/go_reviews/cassandra"
+	"github.com/datalodge/go_reviews/cassandra"
 	"github.com/gorilla/mux"
 )
 
