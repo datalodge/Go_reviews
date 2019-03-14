@@ -2,7 +2,7 @@ package cassandra
 
 import (
 	"fmt"
-	"os"
+	"time"
 
 	"github.com/gocql/gocql"
 )
@@ -10,19 +10,21 @@ import (
 // Session for cassandra connection
 var Session *gocql.Session
 
-// creates a cassandra connection
 func init() {
+	connect()
+}
+
+func connect() {
 	var err error
-
-	//gets the ec2 from env and creates a session to cassandra to get data from the cluster
-	ec2 := os.Getenv("DATA_LODGE")
-	cluster := gocql.NewCluster(ec2)
+	cluster := gocql.NewCluster("ec2-54-193-62-206.us-west-1.compute.amazonaws.com")
 	cluster.Keyspace = "data_lodge"
-
+	cluster.Consistency = gocql.One
 	Session, err = cluster.CreateSession()
 	if err != nil {
-		panic(err)
+		// Must be because the db is not ready yet
+		time.Sleep(10000 * time.Millisecond)
+		connect()
 	}
-	fmt.Println("cassandra init done")
 
+	fmt.Println("cassandra init done!")
 }
