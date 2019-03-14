@@ -15,9 +15,7 @@ RUN go get github.com/gorilla/mux
 
 RUN go get github.com/gocql/gocql
 
-RUN go get github.com/kevinbece5/go_reviews/reviews
-
-RUN go get github.com/kevinbece5/go_reviews/cassandra
+RUN go get  github.com/datalodge/go_reviews/cassandra
 
 RUN go build main.go
 
