@@ -1,7 +1,5 @@
 package reviews
 
-// id,home_id,accuracy,communication,cleanliness,check_in,value,location,complaints,comment,created_at,name,img_url
-
 // Review struct to hold review data on a home
 type Review struct {
 	ID            string `json:"id"`
