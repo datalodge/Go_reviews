@@ -11,13 +11,15 @@ WORKDIR /src/app
 COPY . /src/app
 
 # Does your app have any dependencies that should be installed?
-RUN go get github.com/gorilla/mux
 
-RUN go get github.com/gocql/gocql
 
 RUN go get github.com/datalodge/go_reviews/cassandra
 
-# RUN go get github.com/datalodge/go_reviews/reviews
+RUN go get github.com/datalodge/go_reviews/reviews
+
+RUN go get github.com/gorilla/mux
+
+RUN go get github.com/gocql/gocql
 
 RUN go build main.go
 

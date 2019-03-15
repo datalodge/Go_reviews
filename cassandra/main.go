@@ -16,7 +16,8 @@ func init() {
 
 func connect() {
 	var err error
-	cluster := gocql.NewCluster("ec2-54-193-62-206.us-west-1.compute.amazonaws.com")
+
+	cluster := gocql.NewCluster("ec2-13-56-78-151.us-west-1.compute.amazonaws.com", "ec2-13-57-178-68.us-west-1.compute.amazonaws.com")
 	cluster.Keyspace = "data_lodge"
 	cluster.Consistency = gocql.One
 	Session, err = cluster.CreateSession()
